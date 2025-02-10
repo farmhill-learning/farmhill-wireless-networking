@@ -30,7 +30,7 @@ The 2.GHz access point is now live.
 
 Click on the _Edit_ button of the second access point (last row).
 
-![](../images/openwrt-accesspoint-edit2.png)
+![](../images/openwrt-accesspoint2-edit.png)
 
 Repeat the same steps as in the previous step.
 

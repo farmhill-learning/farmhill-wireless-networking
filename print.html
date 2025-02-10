@@ -1,0 +1,325 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Wireless Networking Setup for Farmhill Learning</title>
+        <meta name="robots" content="noindex">
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Wireless Networking Setup for Farmhill Learning</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="wireless-networking-setup-for-farmhill-learning"><a class="header" href="#wireless-networking-setup-for-farmhill-learning">Wireless Networking Setup for Farmhill Learning</a></h1>
+<p>This is the documentation for the wireless networking setup at <a href="https://farmhill-learning.org/">Farmhill Learning Community</a>.</p>
+<p>The wireless network is setup using a router running <a href="https://openwrt.org/">OpenWrt</a>, an open-source operating system for wireless routers based on linux.</p>
+<p>Apart for providing wireless network, this setup also provides additional services like hosting static websites and services to sync content from various devices in the local network.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="the-router"><a class="header" href="#the-router">The Router</a></h1>
+<p>The current setup uses <em>D-Link DIR-853 A3</em> wireless router.</p>
+<img src="images/dlink-dir-853.png" alt="D-Link DIR-853" width="auto" height="200">
+<h2 id="the-specs"><a class="header" href="#the-specs">The Specs</a></h2>
+<ul>
+<li>
+<p>Model: DIR-853</p>
+</li>
+<li>
+<p>H/W Ver: A3</p>
+</li>
+<li>
+<p>CPU: MIPS 1004Kc V2.15 880MHz (2 cores, 4 threads)</p>
+</li>
+<li>
+<p>RAM: 256 MB</p>
+</li>
+<li>
+<p>Disk: 24 MB</p>
+</li>
+</ul>
+<p>This device has resonably good compute and memory, but not enough disk space to install many external software. Using external USD disk will address that issue.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="setting-up-the-router"><a class="header" href="#setting-up-the-router">Setting up the Router</a></h1>
+<p>To setup the router, we need to the following three things.</p>
+<ol>
+<li>Installing OpenWRT firmware</li>
+<li>Connecting to the router from a laptop</li>
+<li>Secure the device</li>
+<li>Connecting to wifi network</li>
+<li>Enable wifi access points</li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="installing-openwrt-firmware"><a class="header" href="#installing-openwrt-firmware">Installing OpenWRT Firmware</a></h1>
+<p><em>Please note that this needs to be done only once. The router may have this firmware already installed.</em></p>
+<p>The OpenWRT Firmware can be downloaded using the <a href="https://firmware-selector.openwrt.org/?version=24.10.0&amp;target=ramips%2Fmt7621&amp;id=dlink_dir-853-a3">firmware-selector of openwrt</a>. You need to download the factory image.</p>
+<p>The Latest version as of Feb 2025 is linked below.</p>
+<p><a href="https://downloads.openwrt.org/releases/24.10.0/targets/ramips/mt7621/openwrt-24.10.0-ramips-mt7621-dlink_dir-853-a3-squashfs-factory.bin">OpenWrt firmware version 24.10 for model D-Link DIR-853 A3</a>.</p>
+<p>Every router will have a way to update firmware. It is available from the admin interface of the router, typically in the <em>System</em> tab/menu and it will be labelled as <em>Backup / update firmware</em>.</p>
+<p>Once you select the factory image and upload, the led lights on router will flash repeated indicating that it is resetting and after a minute or so, the router will be ready with openwrt.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="connecting-to-the-router"><a class="header" href="#connecting-to-the-router">Connecting to the Router</a></h1>
+<p><em>Connect your laptop to the router using ethernet cable to configure it.</em></p>
+<p>You can configure the router by connecting it to a laptop via ethernet. Connect the laptop ethernet port to one of the LAN ports (one of the yellow ports).</p>
+<h2 id="network-setup"><a class="header" href="#network-setup">Network Setup</a></h2>
+<p>After connecting, setup the laptop with manual IP address with the following settings.</p>
+<pre><code>IP Address: 192.168.1.2
+Subnet mark: 255.255.255.0
+Gateway: 192.168.1.1
+</code></pre>
+<h2 id="ping-test"><a class="header" href="#ping-test">Ping Test</a></h2>
+<p>After the settings are done, you can verify if you can reach the router by running the <code>ping</code> command
+from terminal/command promt.</p>
+<pre><code>$ ping 192.168.1.1
+PING 192.168.1.1 (192.168.1.1) 56(84) bytes of data.
+64 bytes from 192.168.1.1: icmp_seq=1 ttl=64 time=0.675 ms
+64 bytes from 192.168.1.1: icmp_seq=2 ttl=64 time=0.680 ms
+64 bytes from 192.168.1.1: icmp_seq=3 ttl=64 time=0.682 ms
+^C
+--- 192.168.1.1 ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2029ms
+rtt min/avg/max/mdev = 0.675/0.679/0.682/0.003 ms
+</code></pre>
+<h2 id="the-router-admin-interface"><a class="header" href="#the-router-admin-interface">The Router Admin Interface</a></h2>
+<p>Open your browser and visit <a href="http://192.168.1.1/">http://192.168.1.1/</a> or <a href="http://openwrt.lan">http://openwrt.lan</a>.</p>
+<p><img src="setup/../images/openwrt-login-page.png" alt="" /></p>
+<p>It will ask you to login. Press <em>Log in</em> without entering any password.</p>
+<p>You'll be see the status page of the router.</p>
+<p><img src="setup/../images/openwrt-status-page.png" alt="" /></p>
+<p>Congratulations! You have sucessfully connected to the router. The next step is to secure the device.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="securing-the-device"><a class="header" href="#securing-the-device">Securing the Device</a></h1>
+<p><em>Set a password to secure the router from unauthrized access.</em></p>
+<p>When you go to the router web interface, it was a "No password set!" warning at the top of the page.</p>
+<p><img src="setup/../images/openwrt-no-password-set.png" alt="" /></p>
+<p>Click on <em>Go to password configuration</em> and set a password.</p>
+<p><img src="setup/../images/openwrt-password-configuration.png" alt="" /></p>
+<h2 id="connecting-to-an-existing-wifi-network"><a class="header" href="#connecting-to-an-existing-wifi-network">Connecting to an existing wifi network</a></h2>
+<p>Go to <code>Network &gt; Wireless</code> page.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="connecting-to-client-wi-fi-network"><a class="header" href="#connecting-to-client-wi-fi-network">Connecting to client Wi-Fi network</a></h1>
+<p><em>Configure the router to connect to an existing wifi network to reach the internet.</em></p>
+<h2 id="step-1-go-to-wireless-overview-page"><a class="header" href="#step-1-go-to-wireless-overview-page">Step 1: Go to Wireless Overview page</a></h2>
+<p>Go to <code>Network &gt; Wireless</code> page in the router
+admin interface.</p>
+<p>Click on the <code>Scan</code> button of <code>radio0</code>. The <code>radio0</code> is the <code>2.4 GHz</code> network and the <code>radio1</code> is the <code>5 GHz</code> network. Use <code>radio1</code> instead of <code>radio0</code> if you would like to connect to a <code>5 GHz</code>network.</p>
+<p><img src="setup/../images/openwrt-wireless-settings.png" alt="" /></p>
+<h2 id="step-2-wireles-scan"><a class="header" href="#step-2-wireles-scan">Step 2: Wireles Scan</a></h2>
+<p>You'll see the <code>Wireless Scan</code> dialog. Select the network that you want to join.</p>
+<p><img src="setup/../images/openwrt-wireless-scan.png" alt="" /></p>
+<h2 id="step-3-join-network"><a class="header" href="#step-3-join-network">Step 3: Join Network</a></h2>
+<p>You'll be prompted with the <code>Joining Network</code> dialog.</p>
+<p><img src="setup/../images/openwrt-joining-network.png" alt="" /></p>
+<p>Please enter the wifi password in the <code>WPA passphase</code> field and <em>Submit</em>.</p>
+<p>Click <em>Save</em> on the next dialog.</p>
+<h2 id="step-4-save--apply"><a class="header" href="#step-4-save--apply">Step 4: Save &amp; Apply</a></h2>
+<p>You'll be back to the <em>Wireless Overview</em> page. Click on <em>Save and Apply</em> at the bottom of the page.</p>
+<p><img src="setup/../images/openwrt-wireless-save-apply.png" alt="" /></p>
+<p>The router will apply the changes and restart. And you'll see an entry in the <em>Associated Stations</em> section.</p>
+<p><img src="setup/../images/openwrt-wireless-associated-stations.png" alt="" /></p>
+<h2 id="step-5-verify"><a class="header" href="#step-5-verify">Step 5: Verify</a></h2>
+<p>You should be able to connect to internet from your laptop. Verify by opening any website from your browser or by running <code>ping google.com</code> from terminal.</p>
+<p>The router is connected to internet and can be used with an ethernet connection, but the wifi access point is not enabled yet. We'll configure that in the next step.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="enable-wifi-access-point"><a class="header" href="#enable-wifi-access-point">Enable Wifi Access Point</a></h1>
+<p><em>Enable wifi access points in the router so that devices in the visinity (laptops and mobile phones) can connect to the router.</em></p>
+<p>The router has two accesspoints one each for 2.4 GHz and 5 GHz band. The 2.4 GHz band has lower bandwidth, but spans longer distances. The 5 GHz band on the other hand has high bandwidth, but covers only a short distance.</p>
+<h2 id="configure-24-ghz-access-point"><a class="header" href="#configure-24-ghz-access-point">Configure 2.4 GHz Access Point</a></h2>
+<p>Click on the <em>Edit</em> button of the first access point (second row).</p>
+<p><img src="setup/../images/openwrt-accesspoint-edit.png" alt="" /></p>
+<p>Set the access point name.</p>
+<p><img src="setup/../images/openwrt-accesspoint-name.png" alt="" /></p>
+<p>Go to the <em>Wireless Security</em> tab, select <code>WPA2-PSK (strong security)</code> as Encryption and set a password in the <code>Key</code> field.</p>
+<p><img src="setup/../images/openwrt-accesspoint-security.png" alt="" /></p>
+<p>Click on the <code>Save</code> button.</p>
+<p>Once you are back on the <em>wireless overview</em> page, click on the <em>Enable</em> button for the access point.</p>
+<p><img src="setup/../images/openwrt-accesspoint-enable.png" alt="" /></p>
+<p>The 2.GHz access point is now live.</p>
+<h2 id="configure-5-ghz-access-point"><a class="header" href="#configure-5-ghz-access-point">Configure 5 GHz Access Point</a></h2>
+<p>Click on the <em>Edit</em> button of the second access point (last row).</p>
+<p><img src="setup/../images/openwrt-accesspoint-edit2.png" alt="" /></p>
+<p>Repeat the same steps as in the previous step.</p>
+<p>Don't forget to enable to access point at the end.</p>
+<p>You can select the same name for both the access points if you want the connecting device to automatically select best of these network, or you can have separate names.</p>
+<p>The possible names would be <code>Farmhill Wifi</code> and <code>Farmhill Wifi 5G</code> for 2.4 and 5 GHz respectively.</p>
+<h2 id="verifying"><a class="header" href="#verifying">Verifying</a></h2>
+<p>Now both the access points are live. You can verify by connecting to wifi from a laptop or a mobile phone.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+        <script>
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+
+    </div>
+    </body>
+</html>

@@ -1,0 +1,6 @@
+[book]
+authors = ["Anand Chitipothu"]
+language = "en"
+multilingual = false
+src = "docs"
+title = "Wireless Networking Setup for Farmhill Learning"

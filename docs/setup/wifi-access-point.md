@@ -40,7 +40,7 @@ You can select the same name for both the access points if you want the connecti
 
 The possible names would be `Farmhill Wifi` and `Farmhill Wifi 5G` for 2.4 and 5 GHz respectively.
 
-## Verifying
+## Verify
 
-Now both the access points are live. You can verify by connecting to wifi from a laptop or a mobile phone.
+Now both the access points are live. You can verify them by connecting to wifi from a laptop or a mobile phone.
 

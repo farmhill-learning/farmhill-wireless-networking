@@ -10,7 +10,3 @@ Click on _Go to password configuration_ and set a password.
 
 ![](../images/openwrt-password-configuration.png)
 
-## Connecting to an existing wifi network
-
-Go to `Network > Wireless` page.
-

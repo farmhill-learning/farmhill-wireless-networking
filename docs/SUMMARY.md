@@ -8,3 +8,4 @@
     - [Securing the Device](setup/securing.md)
     - [Connecting to Client Wi-Fi Network](setup/connecting-to-wifi.md)
     - [Enable Wi-Fi Access Point](setup/wifi-access-point.md)
+- [Configuring the Disk](disk.md)
